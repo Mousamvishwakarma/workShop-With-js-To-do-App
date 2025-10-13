@@ -1,165 +1,166 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #74ABE2, #5563DE);
-      color: #333;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            color: #333;
+        }
 
-    h1 {
-      text-align: center;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    }
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
 
-    form {
-      text-align: center;
-      margin: 20px 0;
-    }
+        form {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-    input[type="text"] {
-      width: 400px;
-      height: 60px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 3px solid #ccc;
-      outline: none;
-      transition: 0.3s;
-    }
+        input[type="text"] {
+            width: 400px;
+            height: 60px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 3px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+        }
 
-    input[type="text"]:focus {
-      border-color: #5563DE;
-      box-shadow: 0 0 5px rgba(85, 99, 222, 0.5);
-    }
+        input[type="text"]:focus {
+            border-color: #5563DE;
+            box-shadow: 0 0 5px rgba(85, 99, 222, 0.5);
+        }
 
-    input[type="submit"] {
-      padding: 10px 15px;
-      margin-left: 10px;
-      border: none;
-      background-color: #ffb703;
-      color: #333;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      border: 3px solid #ccc;
-    }
+        input[type="submit"] {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background-color: #ffb703;
+            color: #333;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 3px solid #ccc;
+        }
 
-    input[type="submit"]:hover {
-      background-color: #fb8500;
-      color: white;
-    }
+        input[type="submit"]:hover {
+            background-color: #fb8500;
+            color: white;
+        }
 
-    .container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
-    }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
 
-    .column {
-      background-color: white;
-      width: 300px;
-      height: 500px;
-      border-radius: 12px;
-      border: 3px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      padding: 15px;
-      overflow-y: auto;
-      transition: transform 0.3s;
-    }
+        .column {
+            background-color: white;
+            width: 300px;
+            height: 500px;
+            border-radius: 12px;
+            border: 3px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            overflow-y: auto;
+            transition: transform 0.3s;
+        }
 
-    .column:hover {
-      transform: translateY(-5px);
-    }
+        .column:hover {
+            transform: translateY(-5px);
+        }
 
-    .column h3 {
-      font-size: 22px;
-      color: #5563DE;
-      text-shadow: none;
-      border-bottom: 2px solid #5563DE;
-      padding-bottom: 8px;
-      text-align: center;
-    }
+        .column h3 {
+            font-size: 22px;
+            color: #5563DE;
+            text-shadow: none;
+            border-bottom: 2px solid #5563DE;
+            padding-bottom: 8px;
+            text-align: center;
+        }
 
-    .task {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 8px;
-      margin-top: 10px;
-      background-color: #f8f9fa;
-      transition: 0.3s;
-    }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            background-color: #f8f9fa;
+            transition: 0.3s;
+        }
 
-    .task:hover {
-      background-color: #e9ecef;
-      transform: scale(1.02);
-    }
+        .task:hover {
+            background-color: #e9ecef;
+            transform: scale(1.02);
+        }
 
-    button {
-      background-color: #5563DE;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      padding: 6px 10px;
-      transition: 0.3s;
-    }
-button:hover {
-      background-color: #3949ab;
-    }
+        button {
+            background-color: #5563DE;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            padding: 6px 10px;
+            transition: 0.3s;
+        }
 
-    .delete-btn {
-      background-color: #ff4d4d;
-    }
+        button:hover {
+            background-color: #3949ab;
+        }
 
-    .delete-btn:hover {
-      background-color: #cc0000;
-    }
+        .delete-btn {
+            background-color: #ff4d4d;
+        }
 
-  </style>
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </head>
 
 <body>
-  <div>
-    <h1>Todo App</h1>
+    <div>
+        <h1>Todo App</h1>
 
-    <form onsubmit="addTask(event)">                                                            
-      <input type="text" id="taskInput" placeholder="Enter task">
-      <input type="submit" value="Add">
-    </form>
-    <hr>
+        <form onsubmit="addTask(event)">
+            <input type="text" id="taskInput" placeholder="Enter task">
+            <input type="submit" value="Add">
+        </form>
+        <hr>
 
-    <div class="container">
-      <div class="column" id="todo">
-        <h3>Todo</h3>
-      </div>
-      <div class="column" id="progress">
-        <h3>In Progress</h3>
-      </div>
-      <div class="column" id="done">
-        <h3>Done</h3>
-      </div>
+        <div class="container">
+            <div class="column" id="todo">
+                <h3>Todo</h3>
+            </div>
+            <div class="column" id="progress">
+                <h3>In Progress</h3>
+            </div>
+            <div class="column" id="done">
+                <h3>Done</h3>
+            </div>
+        </div>
     </div>
-  </div>
 
- <script src="todoapp.js"></script>
+    <script src="todoapp.js"></script>
 </body>
+
 </html>
